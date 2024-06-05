@@ -44,7 +44,6 @@ namespace Client
         //when the control is focused, the placeholder is removed
         private void removePlaceHolder()
         {
-
             if (isPlaceHolder)
             {
                 base.Text = "";

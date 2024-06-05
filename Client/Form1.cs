@@ -12,6 +12,7 @@ using System.Windows.Forms;
 //using System.Xml;
 using Client.Massage;
 using Newtonsoft.Json;
+using System.Net.NetworkInformation;
 
 namespace Client
 {
@@ -19,6 +20,7 @@ namespace Client
     {
         const string SERVER_URL = "http://localhost:8080/";
         public string UserName { get; set; }
+        public string UserPassword { get; set; }
         //public Form1(string Name, string Password)
         public Form1()
         {
@@ -28,19 +30,21 @@ namespace Client
         private void button1_Click(object sender, EventArgs e)
         {
             string text = textBox1.Text;
-            string fileName = "context.txt";
+            string receiverName = ReceiverNameTextBox3.Text;
             //string url = SERVER_URL + "put/" + fileName;
             string url = SERVER_URL + "message";
             WebClient client = new WebClient();
             try
             {
-                //client.UploadString(url, "PUT", content);
-                client.UploadString(url, text);
-                Console.WriteLine($"File '{fileName}' uploaded successfully.");
+                string Auth = UserName + ":" + UserPassword;
+                string str = Convert.ToBase64String(Encoding.UTF8.GetBytes(Auth));
+                client.Headers.Add("Authorization", "Basic " + str);
+                client.Headers.Add("ReceiverName", receiverName);
+                client.UploadString(url, text); //тоже "PUT" запрос
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error uploading file '{fileName}': {ex.Message}");
+                Console.WriteLine($"Error': {ex.Message}");
             }
         }
 
@@ -52,6 +56,9 @@ namespace Client
             WebClient client = new WebClient();
             try
             {
+                string Auth = UserName + ":" + UserPassword;
+                string str = Convert.ToBase64String(Encoding.UTF8.GetBytes(Auth));
+                client.Headers.Add("Authorization", "Basic " + str);
                 string content = client.DownloadString(url);
                 var settings = new JsonSerializerSettings
                 {
@@ -61,12 +68,15 @@ namespace Client
                 };
                 List<TextMassage> currency = Newtonsoft.Json.JsonConvert.DeserializeObject<List<TextMassage>>(content, settings);
                 Console.WriteLine($"Content of file message:\n{content}");
+                //в currency хранитятся данные о сообщениях
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error downloading file message: {ex.Message}");
             }
         }
+
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {

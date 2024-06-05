@@ -40,13 +40,14 @@
             this.TBName.Name = "TBName";
             this.TBName.Size = new System.Drawing.Size(194, 20);
             this.TBName.TabIndex = 0;
+            this.TBName.Text = "andrey";
             // 
             // BCansel
             // 
             this.BCansel.Location = new System.Drawing.Point(183, 145);
             this.BCansel.Name = "BCansel";
             this.BCansel.Size = new System.Drawing.Size(75, 23);
-            this.BCansel.TabIndex = 2;
+            this.BCansel.TabIndex = 3;
             this.BCansel.Text = "Cancel";
             this.BCansel.UseVisualStyleBackColor = true;
             // 
@@ -55,7 +56,7 @@
             this.BContinue.Location = new System.Drawing.Point(302, 145);
             this.BContinue.Name = "BContinue";
             this.BContinue.Size = new System.Drawing.Size(75, 23);
-            this.BContinue.TabIndex = 3;
+            this.BContinue.TabIndex = 2;
             this.BContinue.Text = "Continue";
             this.BContinue.UseVisualStyleBackColor = true;
             this.BContinue.Click += new System.EventHandler(this.BContinue_Click);
@@ -66,6 +67,7 @@
             this.TBPassword.Name = "TBPassword";
             this.TBPassword.Size = new System.Drawing.Size(194, 20);
             this.TBPassword.TabIndex = 1;
+            this.TBPassword.Text = "qwerty";
             // 
             // LoginForm
             // 
