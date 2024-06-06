@@ -31,7 +31,6 @@ namespace Client
             Form1 form1 = new Form1();
             form1.UserName = loginForm.UserName;
             form1.UserPassword = loginForm.UserPassword;
-            
             Application.Run(form1);
 
             //Application.Run(new Form1(Name, Password));

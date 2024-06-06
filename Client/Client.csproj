@@ -62,9 +62,11 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Massage\Contact.cs" />
     <Compile Include="Massage\FileMassage.cs" />
     <Compile Include="Massage\Message.cs" />
     <Compile Include="Massage\TextMassage.cs" />
+    <Compile Include="Massage\User.cs" />
     <Compile Include="PlaceHolderTextBox .cs">
       <SubType>Component</SubType>
     </Compile>

@@ -34,7 +34,6 @@ namespace Client
         {
             string text = UserName;
             string fileName = "users.txt";
-            //string url = SERVER_URL + "put/" + fileName;
             string url = SERVER_URL + "user";
             WebClient client = new WebClient();
             string result = "false";
@@ -49,8 +48,6 @@ namespace Client
                 // Authorization: Basic YW5kcmV5OnF3ZXJ0eQ==
                 client.Headers.Add("Authorization", "Basic " + str);
                 result = client.UploadString(url, "body"); //при отправке сообщения вместо str будет body
-                //client.
-                
                 if (result.Equals("201")) //вот тут папа помог, не хватало context.Response.Close(); на сервере
                 {
                     //не могу получить result
@@ -77,26 +74,15 @@ namespace Client
         {
             this.UserName = TBName.Text;
             this.UserPassword = TBPassword.Text;
-            //Form1 form1 = new Form1(Name, Password);
-            //LoginForm.Close();
             if (loginOrRegistrationUser())
             {
                 this.Hide();    
-                //this.Close();
-                //взял этот код из Program.Main
-/*
-                Form1 form1 = new Form1();
-                form1.UserName = this.UserName;
-                form1.UserPassword = this.UserPassword;
-                Application.Run(form1);
-*/
             }
             Form1 form1 = new Form1();
             form1.UserName = this.UserName;
             form1.UserPassword = this.UserPassword;
 
             form1.Show();
-            //this.Close();
             this.Hide();
         }
     }

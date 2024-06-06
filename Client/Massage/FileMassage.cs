@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Client.Massage
+namespace Try1Server.Massage
 {
     internal class FileMassage : Message
     {
